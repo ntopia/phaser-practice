@@ -6,23 +6,9 @@
     <link rel="stylesheet" href="/style.css" type="text/css" />
 
     <script src="https://github.com/photonstorm/phaser/releases/download/v2.4.7/phaser.min.js"></script>
+    <script src="/script.js"></script>
 </head>
 <body>
     <div id="screen"></div>
-
-    <script type="text/javascript">
-        window.onload = function () {
-            var game = new Phaser.Game('100', '100', Phaser.AUTO, 'screen', { preload: preload, create: create });
-
-            function preload () {
-                game.load.image('logo', 'Original_Doge_meme.jpg');
-            }
-
-            function create () {
-                var logo = game.add.sprite(game.world.centerX, game.world.centerY, 'logo');
-                logo.anchor.setTo(0.5, 0.5);
-            }
-        };
-    </script>
 </body>
 </html>
