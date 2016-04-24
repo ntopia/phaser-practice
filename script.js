@@ -1,11 +1,12 @@
 
 window.onload = function () {
-    var game = new Phaser.Game('100', '100', Phaser.AUTO, '',
+    var game = new Phaser.Game(800, 600, Phaser.AUTO, '',
         { preload: preload, create: create, update: update }
     );
 
     function preload() {
-        game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
+        game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+        game.scale.setResizeCallback(onResize, this);
 
         game.load.image('logo', 'Original_Doge_meme.jpg');
     }
@@ -21,5 +22,22 @@ window.onload = function () {
     function update() {
         logo.x = game.world.centerX;
         logo.y = game.world.centerY;
+    }
+
+    function onResize(scale, parentBounds) {
+        var modelRatio = 800.0 / 600.0;
+
+        var screenWidth = parentBounds.width;
+        var screenHeight = parentBounds.height;
+        var screenRatio = screenWidth / screenHeight;
+
+        if (screenRatio >= modelRatio) {
+            scale.setGameSize(screenWidth, screenHeight);
+            scale.setUserScale(1, 1);
+        }
+        else {
+            scale.setGameSize(screenWidth, screenWidth / modelRatio);
+            scale.setUserScale(1, 1);
+        }
     }
 };
