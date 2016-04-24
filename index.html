@@ -2,14 +2,17 @@
 <html>
 <head>
     <title>phaser practice</title>
+
+    <link rel="stylesheet" href="/style.css" type="text/css" />
+
     <script src="https://github.com/photonstorm/phaser/releases/download/v2.4.7/phaser.min.js"></script>
 </head>
 <body>
-    wow
+    <div id="screen"></div>
 
     <script type="text/javascript">
         window.onload = function () {
-            var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create });
+            var game = new Phaser.Game('100', '100', Phaser.AUTO, 'screen', { preload: preload, create: create });
 
             function preload () {
                 game.load.image('logo', 'Original_Doge_meme.jpg');
